@@ -1,0 +1,3 @@
+# Cloudflare Pages — Redirects para SPA
+# La landing es una sola página, cualquier ruta carga index.html
+/*    /index.html   200
