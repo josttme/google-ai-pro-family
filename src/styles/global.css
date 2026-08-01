@@ -1,0 +1,361 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════
+   DESIGN TOKENS — Google AI Pro Family Landing
+   ═══════════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Tipografía ── */
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* ── Paleta Gemini (IA) ── */
+  --color-gemini-50: #eef2ff;
+  --color-gemini-100: #e0e7ff;
+  --color-gemini-200: #c7d2fe;
+  --color-gemini-300: #a5b4fc;
+  --color-gemini-400: #818cf8;
+  --color-gemini-500: #6366f1;
+  --color-gemini-600: #4f46e5;
+  --color-gemini-700: #4338ca;
+  --color-gemini-800: #3730a3;
+  --color-gemini-900: #312e81;
+  --color-gemini-950: #1e1b4b;
+
+  /* ── YouTube Red ── */
+  --color-yt-red: #ff0033;
+  --color-yt-red-light: #ff3b5c;
+  --color-yt-red-dark: #cc0029;
+
+  /* ── Animaciones ── */
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-slide-up: slide-up 0.6s ease-out 0.15s both;
+  --animate-slide-up-delayed: slide-up 0.6s ease-out 0.3s both;
+  --animate-scale-in: scale-in 0.5s ease-out 0.1s both;
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 10s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s ease-in-out infinite;
+  --animate-border-glow: border-glow 3s ease-in-out infinite;
+
+  /* ── Sombras ── */
+  --shadow-glow-indigo: 0 0 30px rgb(99 102 241 / 0.15), 0 0 60px rgb(99 102 241 / 0.08);
+  --shadow-glow-purple: 0 0 30px rgb(147 51 234 / 0.15), 0 0 60px rgb(147 51 234 / 0.08);
+  --shadow-card-hover: 0 20px 40px rgb(0 0 0 / 0.3), 0 0 30px rgb(99 102 241 / 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   KEYFRAMES
+   ═══════════════════════════════════════════════════════════════════ */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgb(99 102 241 / 0.10), 0 0 60px rgb(99 102 241 / 0.03);
+  }
+  50% {
+    box-shadow: 0 0 35px rgb(99 102 241 / 0.30), 0 0 100px rgb(99 102 241 / 0.12);
+  }
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    border-color: rgb(99 102 241 / 0.20);
+    box-shadow: 0 0 15px rgb(99 102 241 / 0.05);
+  }
+  50% {
+    border-color: rgb(99 102 241 / 0.50);
+    box-shadow: 0 0 30px rgb(99 102 241 / 0.15);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   STAGGER ANIMATION DELAYS
+   ═══════════════════════════════════════════════════════════════════ */
+
+.anim-delay-100 { animation-delay: 0.1s; }
+.anim-delay-200 { animation-delay: 0.2s; }
+.anim-delay-300 { animation-delay: 0.3s; }
+.anim-delay-400 { animation-delay: 0.4s; }
+.anim-delay-500 { animation-delay: 0.5s; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   PREFERS-REDUCED-MOTION (a11y)
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html { scroll-behavior: auto; }
+
+  .motion-safe\:animate-float,
+  .motion-safe\:animate-float-slow {
+    animation: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PREFERS-CONTRAST (a11y)
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (prefers-contrast: high) {
+  .text-slate-400 { color: rgb(203 213 225); }
+  .text-slate-500 { color: rgb(203 213 225); }
+  .text-slate-600 { color: rgb(226 232 240); }
+  .text-slate-700 { color: rgb(241 245 249); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════════════════════ */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Scrollbar minimalista (WebKit + Firefox) */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgb(15 23 42); }
+::-webkit-scrollbar-thumb { background: rgb(51 65 85); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgb(71 85 105); }
+* { scrollbar-width: thin; scrollbar-color: rgb(51 65 85) rgb(15 23 42); }
+
+/* Foco accesible */
+*:focus-visible {
+  outline: 2px solid rgb(99 102 241);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+[aria-hidden="true"] {
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Gradientes de texto ── */
+.text-gradient-gemini {
+  background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-fire {
+  background: linear-gradient(135deg, #ff0033 0%, #ff6b6b 50%, #ff8e53 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glow rings ── */
+.glow-ring-indigo {
+  box-shadow:
+    0 0 30px rgb(99 102 241 / 0.15),
+    0 0 60px rgb(99 102 241 / 0.08),
+    inset 0 1px 0 rgb(255 255 255 / 0.05);
+}
+
+.glow-ring-red {
+  box-shadow:
+    0 0 30px rgb(255 0 51 / 0.12),
+    0 0 60px rgb(255 0 51 / 0.06),
+    inset 0 1px 0 rgb(255 255 255 / 0.05);
+}
+
+.glow-ring-emerald {
+  box-shadow:
+    0 0 30px rgb(16 185 129 / 0.12),
+    0 0 60px rgb(16 185 129 / 0.06),
+    inset 0 1px 0 rgb(255 255 255 / 0.05);
+}
+
+/* ── Glass morphism (con fallback para navegadores sin backdrop-filter) ── */
+.glass-card {
+  background: rgb(15 23 42 / 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgb(51 65 85 / 0.40);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-card {
+    background: rgb(15 23 42 / 0.92);
+  }
+}
+
+/* ── Divisor elegante ── */
+hr.glass {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(71 85 105 / 0.4) 20%,
+    rgb(99 102 241 / 0.4) 50%,
+    rgb(71 85 105 / 0.4) 80%,
+    transparent 100%
+  );
+}
+
+/* ── Card hover interactions ── */
+.card-lift {
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgb(0 0 0 / 0.3), 0 0 30px rgb(99 102 241 / 0.1);
+}
+
+@media (hover: none) {
+  .card-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ── Selección de texto ── */
+::selection {
+  background: rgb(99 102 241 / 0.4);
+  color: rgb(255 255 255);
+}
+
+/* ── Diagonal stripe pattern para columnas "desfavorecidas" ── */
+.bg-stripes-slate {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    rgb(51 65 85 / 0.08) 4px,
+    rgb(51 65 85 / 0.08) 8px
+  );
+}
+
+/* ── Fallback para backdrop-filter en toda la app ── */
+@supports not (backdrop-filter: blur(1px)) {
+  .backdrop-blur-xl { background: rgb(15 23 42 / 0.92); }
+  .backdrop-blur-md { background: rgb(15 23 42 / 0.88); }
+  .backdrop-blur-sm { background: rgb(15 23 42 / 0.84); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION REVEAL — CSS-only scroll animation (progressive enhancement)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Solo en navegadores que soportan animation-timeline */
+@supports (animation-timeline: view()) {
+  .reveal-on-scroll {
+    animation: fade-in 0.8s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+}
+
+/* Fallback: sin animación (el contenido está visible por defecto) */
+@supports not (animation-timeline: view()) {
+  .reveal-on-scroll {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SKIP-TO-CONTENT (a11y) — visible solo en focus
+   ═══════════════════════════════════════════════════════════════════ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .fixed, .pointer-events-none {
+    display: none !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+  }
+}
