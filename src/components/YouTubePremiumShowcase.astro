@@ -75,12 +75,12 @@ const features = [
 
           <div class="relative z-10 flex flex-col sm:flex-row gap-6 items-start">
             {/* WebP animado */}
-            <div class="shrink-0 w-full sm:w-52 h-52 rounded-2xl overflow-hidden border border-slate-700/60 bg-slate-950/80 flex items-center justify-center">
+            <div class="shrink-0 w-full sm:w-52 h-auto sm:h-52 rounded-2xl overflow-hidden border border-slate-700/60 bg-slate-950/80 flex items-center justify-center">
               <img
                 src={f.media}
                 alt={f.alt}
                 loading="lazy"
-                class="w-full h-full object-contain"
+                class="w-full h-full object-cover"
               />
             </div>
 
