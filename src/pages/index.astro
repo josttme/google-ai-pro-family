@@ -1,17 +1,39 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import MediaHeroSection from "../components/MediaHeroSection.astro";
+import GeminiLiveSection from "../components/GeminiLiveSection.astro";
+import ImageGenSection from "../components/ImageGenSection.astro";
+import YouTubePremiumShowcase from "../components/YouTubePremiumShowcase.astro";
+import StorageWorkspaceSection from "../components/StorageWorkspaceSection.astro";
+import BenefitsBreakdown from "../components/BenefitsBreakdown.astro";
+import PriceComparison from "../components/PriceComparison.astro";
+import PrivacyGuarantee from "../components/PrivacyGuarantee.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import TrustSignals from "../components/TrustSignals.astro";
+import CTASection from "../components/CTASection.astro";
+import FAQ from "../components/FAQ.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Google AI Pro (5TB) + YouTube Premium | $12.000 ARS/mes — 77% OFF"
+>
+  <Hero />
+  <MediaHeroSection />
+  <GeminiLiveSection />
+  <ImageGenSection />
+  <YouTubePremiumShowcase />
+  <hr class="glass" />
+  <StorageWorkspaceSection />
+  <BenefitsBreakdown />
+  <PriceComparison />
+  <PrivacyGuarantee />
+  <HowItWorks />
+  <TrustSignals />
+  <CTASection />
+  <hr class="glass" />
+  <FAQ />
+  <Footer />
+</Layout>
