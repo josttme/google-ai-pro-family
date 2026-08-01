@@ -1,0 +1,446 @@
+{
+  "seo": {
+    "title": "Google AI Pro (5TB) + YouTube Premium | $12.000 ARS/mes — 77% OFF",
+    "description": "Compartí el Plan Familiar de Google AI Pro con 5 TB + YouTube Premium. Acceso a Gemini Advanced, Deep Research, almacenamiento privado y YouTube sin anuncios por solo $12.000 ARS/mes. ¡Solo 1 cupo disponible!",
+    "canonical": "https://googleaifamily.ar",
+    "locale": "es_AR",
+    "ogImage": "/og-image.png",
+    "siteName": "Google AI Pro — Grupo Familiar"
+  },
+
+  "pricing": {
+    "monthlyFee": "12.000",
+    "currency": "ARS",
+    "marketValueIndividual": 52982,
+    "savingsPercentage": "77",
+    "availableSlots": 1,
+    "paymentMethods": ["Transferencia bancaria", "Mercado Pago"],
+    "paymentWindow": "Del 1 al 5 de cada mes"
+  },
+
+  "contact": {
+    "whatsappNumber": "5491112345678",
+    "whatsappMessage": "¡Hola! Quiero reservar el último cupo para Google AI Pro + YouTube Premium por $12.000 ARS/mes. ¿Está disponible todavía?",
+    "whatsappReserveMessage": "¡Hola! Quiero asegurar el último cupo del Grupo Familiar. Contame los pasos para unirme.",
+    "whatsappVariants": {
+      "urgency": "¡Hola! Vi que solo queda 1 cupo. No quiero quedarme afuera. ¿Cómo hago para reservarlo ya?",
+      "value": "¡Hola! Estoy pagando de más por Google One y YouTube. Quiero pasarme al grupo familiar por $12.000 ARS. ¿Queda lugar?",
+      "privacy": "¡Hola! Me interesa unirme al grupo pero quería confirmar: ¿es verdad que nadie puede ver mis fotos ni mis chats de Gemini?",
+      "direct": "¡Hola! Quiero unirme al grupo de Google AI Pro + YouTube Premium por $12.000 ARS/mes. ¿Está disponible?",
+      "referral": "¡Hola! Me pasaron tu contacto. Quiero sumarme al grupo familiar de Google. ¿Queda lugar?"
+    }
+  },
+
+  "urgency": {
+    "messages": {
+      "header": "Grupo activo — Solo queda 1 lugar. Se va por orden de contacto.",
+      "hero": "⚡ Último cupo disponible — El grupo está casi completo",
+      "cta": "Queda 1 solo cupo. No esperes a que se vaya.",
+      "floating": "Desde $12.000 ARS/mes · Último cupo"
+    }
+  },
+
+  "persuasion": {
+    "guarantees": [
+      "Sin contrato. Sin permanencia. Sin débito automático. Entrás y salís cuando quieras.",
+      "Google te protege. Tus datos son tuyos. El administrador no puede ver absolutamente nada."
+    ],
+    "socialProof": [
+      "El grupo ya está activo y funcionando. Solo queda completar el último lugar.",
+      "Somos un grupo familiar legítimo, respaldado por los Términos de Servicio de Google."
+    ],
+    "reciprocity": "Antes de pedirte nada, mirá todo lo que incluye tu acceso:",
+    "scarcity": {
+      "primary": "El Plan Familiar de Google tiene espacio para un miembro más. Cuando se vaya, no se puede agregar a nadie más.",
+      "secondary": "Cuando este cupo se acabe, no hay forma de agregar más personas. Es una limitación real de Google, no una táctica de marketing.",
+      "counter": "Ya hay gente preguntando. El cupo se asigna al primero que confirma el pago."
+    }
+  },
+
+  "hero": {
+    "badge": "⚡ Último cupo disponible — Se va por orden de contacto",
+    "eyebrow": "PLAN FAMILIAR COMPARTIDO",
+    "titleLine1": "Google AI Pro + YouTube Premium",
+    "titleHighlight": "por $12.000 ARS/mes",
+    "subtitle": "Gemini Advanced, 5 TB de almacenamiento privado y YouTube sin anuncios. Todo en tu propia cuenta de Google. Sin perder tu privacidad. Sin cambiar de correo. Sin pagar de más.",
+    "ctaText": "Quiero el último cupo — Escribime por WhatsApp",
+    "secondaryCta": "Hablar por WhatsApp",
+    "priceAnchorLabel": "Lo que pagarías contratando cada servicio por separado",
+    "priceAnchorValue": "$52.982",
+    "priceAnchorHint": "por mes. Sí, casi 50 lucas.",
+    "groupPriceLabel": "Lo que pagás en nuestro grupo familiar",
+    "savingsLabel": "Te ahorrás 77% cada mes",
+    "slotsIndicator": "Último cupo disponible",
+    "activationLabel": "Se activa en el momento"
+  },
+
+  "bento": {
+    "title": "Todo esto es tuyo desde el minuto uno",
+    "subtitle": "Sin cuentas nuevas. Sin migrar tus datos. Sin perder tu historial. Los beneficios premium se activan en tu misma cuenta de Google de siempre.",
+    "cards": [
+      {
+        "id": "gemini",
+        "title": "Gemini Advanced & Deep Research",
+        "subtitle": "La IA más potente del mundo, en tu bolsillo",
+        "description": "Olvidate del Gemini gratuito. Con Gemini Advanced tenés modelos más inteligentes, contexto 10 veces más grande para analizar documentos de cientos de páginas, y respuestas instantáneas incluso en horarios pico.",
+        "tag": "🤖 IA de Vanguardia",
+        "color": "indigo",
+        "span": "col-span-2 row-span-2",
+        "features": [
+          "Gemini Advanced: el modelo más potente de Google",
+          "Deep Research: investigaciones completas en minutos",
+          "Analizá PDFs, Word, Excel y PowerPoint",
+          "Generá imágenes con inteligencia artificial (Imagen 3)",
+          "Contexto de 1 millón de tokens",
+          "Sin cola de espera en horas pico",
+          "Razonamiento paso a paso para problemas complejos",
+          "Subí archivos enormes sin límite molesto"
+        ]
+      },
+      {
+        "id": "youtube",
+        "title": "YouTube Premium + Music",
+        "subtitle": "Nunca más un anuncio en tu vida",
+        "description": "Mirá lo que quieras, cuando quieras, sin interrupciones. Con la pantalla apagada, sin conexión, y con toda la música que existe en alta calidad.",
+        "tag": "🎬 Entretenimiento",
+        "color": "red",
+        "span": "col-span-1 row-span-1",
+        "features": [
+          "Cero anuncios. En serio, ninguno.",
+          "YouTube Music Premium incluido",
+          "Reproducción con pantalla apagada",
+          "Descargas para ver sin conexión",
+          "Audio en alta fidelidad (256 kbps)"
+        ]
+      },
+      {
+        "id": "storage",
+        "title": "5 TB de Almacenamiento Privado",
+        "subtitle": "No borres nada nunca más",
+        "description": "5.000 GB de pozo común. Suficiente para todas tus fotos en calidad original, todos tus archivos de Drive y todos los adjuntos de Gmail. Sin preocuparte por el espacio.",
+        "tag": "☁️ Almacenamiento",
+        "color": "sky",
+        "span": "col-span-1 row-span-1",
+        "features": [
+          "5.000 GB de espacio compartido en el grupo",
+          "Fotos en calidad original sin comprimir",
+          "Backup automático de tu Android",
+          "Gmail, Drive y Photos unificados"
+        ]
+      },
+      {
+        "id": "workspace",
+        "title": "Gemini en Gmail, Docs y Sheets",
+        "subtitle": "Tu asistente personal dentro de las apps que ya usás",
+        "description": "Escribí correos en segundos. Resumí documentos interminables. Creá fórmulas sin saber de Excel. Gemini trabaja dentro de Gmail, Docs y Sheets como si fuera un compañero de trabajo invisible.",
+        "tag": "⚡ Productividad",
+        "color": "emerald",
+        "span": "col-span-2 row-span-1",
+        "features": [
+          "Redactá correos profesionales en segundos",
+          "Resumí documentos largos con un clic",
+          "Creá fórmulas y analizá datos en Sheets",
+          "Generá presentaciones completas en Slides",
+          "Cambiá el tono, traducí y corregí al instante"
+        ]
+      }
+    ]
+  },
+
+  "benefitsBreakdown": {
+    "badge": "Beneficios",
+    "title": "Qué te llevás al unirte al grupo",
+    "subtitle": "No es solo Gemini y YouTube. Es un ecosistema completo de herramientas premium que se activan en tu cuenta personal. Cada miembro recibe su propio acceso independiente. Sin compartir historial. Sin compartir archivos. Sin compartir nada.",
+    "categories": [
+      {
+        "id": "ia",
+        "title": "Inteligencia Artificial Avanzada",
+        "icon": "🧠",
+        "color": "indigo",
+        "benefits": [
+          "Gemini Advanced: más inteligente y rápido que la versión gratuita",
+          "Deep Research: investigá cualquier tema con profundidad profesional",
+          "Contexto de 1M+ tokens: analizá documentos de cientos de páginas",
+          "Subí PDFs, Word, Excel y PowerPoint para que Gemini los analice",
+          "Generación y edición de imágenes en alta resolución con Imagen 3",
+          "Gemini Live: conversación y análisis visual por cámara desde el celular",
+          "Respuestas prioritarias: sin esperar en horarios de alta demanda",
+          "Razonamiento complejo paso a paso para problemas difíciles"
+        ]
+      },
+      {
+        "id": "productividad",
+        "title": "Productividad Integrada",
+        "icon": "⚡",
+        "color": "emerald",
+        "benefits": [
+          "Redactá, resumí y respondé correos desde Gmail con un clic",
+          "Creá documentos, cambiá el tono y traducí dentro de Google Docs",
+          "Generá fórmulas, analizá datos y creá gráficos en Google Sheets",
+          "Resumí conversaciones enteras y documentos largos al instante",
+          "Creá borradores completos a partir de instrucciones simples"
+        ]
+      },
+      {
+        "id": "entretenimiento",
+        "title": "Entretenimiento Premium",
+        "icon": "🎬",
+        "color": "red",
+        "benefits": [
+          "YouTube sin un solo anuncio: videos, shorts, transmisiones en vivo",
+          "YouTube Music Premium: todo el catálogo musical sin interrupciones",
+          "Reproducción en segundo plano: escuchá con la pantalla apagada",
+          "Descargas offline: mirá y escuchá sin conexión a internet",
+          "Audio en alta fidelidad a 256 kbps AAC"
+        ]
+      },
+      {
+        "id": "almacenamiento",
+        "title": "Almacenamiento y Backup",
+        "icon": "☁️",
+        "color": "sky",
+        "benefits": [
+          "5 TB (5.000 GB) de espacio compartidos entre los miembros del grupo",
+          "Espacio holgado para fotos, videos y respaldos personales de uso cotidiano",
+          "Backup automático de tu teléfono Android sin configurar nada",
+          "Tus fotos en calidad original, sin compresión ni pérdida",
+          "Gmail, Drive y Google Photos unificados en un solo lugar"
+        ]
+      },
+      {
+        "id": "privacidad",
+        "title": "Privacidad Absoluta Garantizada",
+        "icon": "🔒",
+        "color": "purple",
+        "benefits": [
+          "Tu cuenta de Google sigue siendo 100% tuya e independiente",
+          "Nadie ve tus correos, fotos, archivos ni búsquedas. Nadie.",
+          "Tu historial de conversaciones con Gemini es completamente privado",
+          "Tus documentos de Drive no son accesibles por ninguna otra persona",
+          "Primero usás tus 15 GB gratuitos. Después, el espacio compartido",
+          "El administrador solo ve cuánto espacio usaste en total, nunca tu contenido"
+        ]
+      }
+    ],
+    "whatIsNotShared": {
+      "title": "Lo que JAMÁS va a pasar en nuestro grupo",
+      "subtitle": "Esto no es un acuerdo de palabra. Es el diseño del sistema de Google Families. El administrador no puede ver tu información aunque quiera.",
+      "items": [
+        "Jamás voy a poder leer tus correos de Gmail",
+        "Jamás voy a poder ver tus fotos de Google Photos",
+        "Jamás voy a poder abrir tus archivos de Drive",
+        "Jamás voy a poder ver con qué consultaste a Gemini",
+        "Jamás voy a poder acceder a tus documentos de Docs o Sheets",
+        "Jamás voy a poder ver tus contraseñas ni tu historial de navegación"
+      ]
+    }
+  },
+
+  "priceComparison": {
+    "badge": "Comparativa",
+    "title": "La diferencia entre pagar de más y pagar lo justo",
+    "subtitle": "Comprar Google AI Pro y YouTube Premium por separado te cuesta $52.982 ARS por mes. En nuestro grupo familiar pagás exactamente $12.000 ARS. Mismos servicios. Misma calidad. Misma privacidad. Pagás menos de la cuarta parte.",
+    "totalLabel": "TOTAL MENSUAL",
+    "totalIndividualLabel": "Precio de mercado (contratación individual)",
+    "totalGroupLabel": "ARS/mes",
+    "savingsLabel": "Menos de la cuarta parte de lo que pagarías por tu cuenta",
+    "ctaText": "Dejar de pagar de más — Unirme por $12.000 ARS",
+    "ctaDisclaimer": "Sin contrato de permanencia • Sin débito automático • Pagás en pesos",
+    "columns": {
+      "individual": "Por tu cuenta",
+      "group": "En nuestro grupo",
+      "included": "Incluido"
+    },
+    "rows": [
+      {
+        "id": "google-ai-pro",
+        "name": "Google AI Pro",
+        "subtitle": "Gemini Advanced + 5 TB de almacenamiento",
+        "iconColor": "indigo",
+        "individualPrice": "",
+        "groupPrice": "Incluido"
+      },
+      {
+        "id": "youtube-premium",
+        "name": "YouTube Premium + Music",
+        "subtitle": "Sin anuncios + streaming musical completo",
+        "iconColor": "red",
+        "individualPrice": "",
+        "groupPrice": "Incluido"
+      },
+      {
+        "id": "workspace-gemini",
+        "name": "Gemini en Gmail, Docs y Sheets",
+        "subtitle": "IA integrada en todo tu espacio de trabajo",
+        "iconColor": "emerald",
+        "individualPrice": "Requiere suscripción Pro",
+        "groupPrice": "Incluido"
+      },
+      {
+        "id": "deep-research",
+        "name": "Deep Research & Generación de Imágenes",
+        "subtitle": "Investigación profunda + creación visual con IA (Imagen 3)",
+        "iconColor": "purple",
+        "individualPrice": "Solo en plan Pro",
+        "groupPrice": "Incluido"
+      }
+    ]
+  },
+
+  "privacy": {
+    "badge": "Privacidad",
+    "title": "🔒 Tu información es solo tuya. Punto.",
+    "subtitle": "La pregunta más común antes de unirse a un grupo familiar es: ¿el administrador puede ver mis cosas? La respuesta corta es NO. La respuesta larga también es NO, y está respaldada por Google.",
+    "description": "Cuando te unís a nuestro grupo familiar, tu cuenta de Google no cambia en nada. Seguís teniendo tu Gmail, tu Drive, tus Fotos, tu historial de Gemini, tus contraseñas y tus documentos. Todo privado. Todo independiente. Como si tuvieras tu propia suscripción individual, pero pagando $12.000 en vez de $52.982.",
+    "guaranteeCtaText": "Unirme con total confianza →",
+    "guaranteeDisclaimer": "Tu privacidad no depende de mi palabra. Depende del diseño técnico de Google Families, que impide que el administrador acceda al contenido de los miembros.",
+    "badges": [
+      {
+        "icon": "🔐",
+        "title": "Cuentas Separadas",
+        "description": "Tu cuenta y la mía no se tocan. Cada uno ve solo lo suyo."
+      },
+      {
+        "icon": "🛡️",
+        "title": "Cifrado de Extremo a Extremo",
+        "description": "Google protege tus datos con los mismos estándares de seguridad que usa para todo."
+      },
+      {
+        "icon": "🚫",
+        "title": "Acceso Bloqueado al Admin",
+        "description": "No puedo ver tus archivos, correos, fotos ni conversaciones. El sistema no me deja."
+      },
+      {
+        "icon": "📱",
+        "title": "Historial 100% Privado",
+        "description": "Lo que le preguntás a Gemini queda entre vos y Gemini. Para siempre."
+      }
+    ]
+  },
+
+  "howItWorks": {
+    "badge": "Cómo unirse",
+    "title": "En 5 minutos ya estás adentro",
+    "subtitle": "Es más fácil de lo que parece. Tres pasos. Sin complicaciones. Sin crear cuentas nuevas. Sin migrar datos.",
+    "steps": [
+      {
+        "step": 1,
+        "title": "Escribime por WhatsApp",
+        "description": "Decime que querés sumarte al grupo. Te respondo al toque para confirmar que hay lugar y coordinamos el pago del primer mes.",
+        "icon": "💬",
+        "duration": "Menos de 2 minutos"
+      },
+      {
+        "step": 2,
+        "title": "Aceptá la invitación de Google",
+        "description": "Te llega un mail oficial de Google Families. Un clic en 'Aceptar' y listo. Tu cuenta sigue igual, solo se activan los beneficios premium.",
+        "icon": "📩",
+        "duration": "1 minuto"
+      },
+      {
+        "step": 3,
+        "title": "Empezá a disfrutar",
+        "description": "Gemini Advanced, YouTube sin anuncios, 5 TB de espacio y todas las funciones premium activadas automáticamente en tu cuenta.",
+        "icon": "🚀",
+        "duration": "Inmediato"
+      }
+    ]
+  },
+
+  "trustSignals": {
+    "title": "Sin letra chica. Sin vueltas.",
+    "signals": [
+      {
+        "icon": "🔐",
+        "title": "Grupo Familiar Oficial de Google",
+        "description": "Recibís una invitación oficial de Google Families. Tu cuenta, tus reglas, tu privacidad."
+      },
+      {
+        "icon": "💳",
+        "title": "Sin Contrato. Sin Permanencia.",
+        "description": "No firmás nada. No hay cláusula de permanencia. Si un mes no querés seguir, no pagás y listo."
+      },
+      {
+        "icon": "🤝",
+        "title": "Atención Personal por WhatsApp",
+        "description": "¿Algo no funciona? Me escribís y lo resolvemos. Sin bots, sin tickets de soporte, sin esperas."
+      },
+      {
+        "icon": "🇦🇷",
+        "title": "Pagás en Pesos, sin Sorpresas",
+        "description": "Transferencia bancaria o Mercado Pago. Nada de dólares, nada de impuestos extra, nada de débito automático."
+      }
+    ]
+  },
+
+  "ctaSection": {
+    "badge": "⚠️ Solo queda 1 cupo. Cuando se vaya, no hay más.",
+    "title": "Queda 1 solo lugar en el grupo. El que lo toma, lo toma.",
+    "subtitle": "El plan familiar de Google tiene un límite físico. El grupo ya está activo con varios miembros. Este es el último espacio disponible. No hay lista de espera. No hay excepciones. Cuando se acabe, se acabó.",
+    "ctaText": "Tomar el último cupo — $12.000 ARS/mes",
+    "disclaimer": "Te respondo yo, personalmente. Sin formularios, sin chatbots, sin vueltas.",
+    "trustItems": [
+      "Pago en pesos argentinos",
+      "Activación inmediata",
+      "Sin contrato permanente"
+    ]
+  },
+
+  "faq": {
+    "badge": "Dudas",
+    "title": "Respondo todo antes de que preguntes",
+    "subtitle": "Si después de leer esto todavía tenés dudas, escribime por WhatsApp y lo charlamos.",
+    "items": [
+      {
+        "q": "¿Cómo funciona exactamente el Grupo Familiar de Google?",
+        "a": "Google permite que varias personas compartan una misma suscripción premium. Cada persona usa su propia cuenta de Google, con su propio Gmail, su propio Drive, sus propias fotos y su propio historial de Gemini. Yo pago la suscripción completa y vos me transferís tu parte cada mes. Es un modelo legal, oficial y respaldado por los Términos de Servicio de Google."
+      },
+      {
+        "q": "¿En serio se activa tan rápido? ¿Qué tengo que hacer?",
+        "a": "Posta, son 5 minutos. Me escribís por WhatsApp, coordinamos el pago del primer mes, te envío la invitación desde Google Families, abrís el mail, tocás 'Aceptar' y listo. Gemini Advanced, YouTube Premium y los 5 TB aparecen en tu cuenta automáticamente. No creás ninguna cuenta nueva. No perdés nada de lo que ya tenés."
+      },
+      {
+        "q": "Tengo miedo de que el administrador vea mis fotos, mis correos o mis chats de Gemini. ¿Es posible?",
+        "a": "Es imposible. No es que yo prometo no mirar; es que el sistema de Google Families no me deja. Técnicamente no puedo ver nada tuyo. Lo único que veo como administrador es cuánto espacio de almacenamiento total estás usando, pero jamás el contenido. Ni fotos, ni correos, ni archivos, ni conversaciones con Gemini. Cada cuenta es una caja fuerte separada."
+      },
+      {
+        "q": "¿Necesito crear una cuenta de Google nueva?",
+        "a": "Para nada. Usás tu mismo Gmail de toda la vida. Mantenés tus correos, tus contactos, tus fotos, tus archivos de Drive, TODO. La invitación simplemente desbloquea los beneficios premium en tu cuenta actual."
+      },
+      {
+        "q": "¿Pierdo los 15 GB gratuitos que ya tengo?",
+        "a": "Al contrario. Tus 15 GB gratuitos se mantienen intactos y se usan primero. Cuando se llenan, automáticamente empezás a usar el espacio compartido de 5 TB sin que tengas que hacer nada. Es un upgrade, no un reemplazo."
+      },
+      {
+        "q": "¿Cómo pago y cuándo?",
+        "a": "Transferencia bancaria o Mercado Pago, lo que te quede más cómodo. El pago es por mes adelantado, entre el 1 y el 5. Sin débito automático, sin tarjeta guardada, sin compromiso a largo plazo. Si un mes no querés o no podés pagar, simplemente no pagás y te salís del grupo. Sin penalización. Sin explicaciones."
+      },
+      {
+        "q": "¿YouTube Premium incluye YouTube Music? ¿Es completo?",
+        "a": "Completo. YouTube sin anuncios en videos, shorts y transmisiones en vivo. Reproducción con la pantalla apagada. Descargas para ver offline. Y YouTube Music Premium con todo el catálogo musical en alta calidad de audio. Exactamente lo mismo que si pagaras la suscripción individual."
+      },
+      {
+        "q": "¿Esto es legal o estoy infringiendo algo?",
+        "a": "Es 100% legal. Google diseñó los Grupos Familiares exactamente para esto: que varias personas compartan una suscripción y cada una pague menos. Está en sus Términos de Servicio. No es un hack, no es una trampa, no es un vacío legal. Es el uso previsto del producto."
+      },
+      {
+        "q": "¿Qué pasa si después de un tiempo quiero salirme?",
+        "a": "Nada malo. Me avisás, dejás de pagar y te salís del grupo. Lo único importante: Google solo te deja cambiar de grupo familiar una vez cada 12 meses. Así que si te salís, asegurate de que es lo que querés porque no vas a poder entrar a otro grupo por un año."
+      },
+      {
+        "q": "OK, me convenciste. ¿Cómo entro?",
+        "a": "Escribime ahora mismo por WhatsApp. Queda 1 solo cupo, el grupo ya está activo y las personas entran por orden de confirmación de pago. Si esperás a mañana, probablemente ya no quede lugar. Son 5 minutos y te cambia la experiencia digital por completo.",
+        "isCTA": true,
+        "ctaText": "¡Quiero el último cupo! — Escribime por WhatsApp"
+      }
+    ]
+  },
+
+  "footer": {
+    "brandName": "Google AI Pro + YouTube Premium",
+    "text": "Grupo Familiar Compartido de Google AI Pro con 5 TB de almacenamiento y YouTube Premium. Todos los servicios mencionados son propiedad de Google LLC. No estamos afiliados oficialmente con Google. Brindamos un servicio legítimo de gestión de grupo familiar respaldado por los Términos de Servicio de Google Families.",
+    "copyright": "Grupo Familiar Google AI Pro. Todos los derechos reservados.",
+    "slots": "Último cupo disponible por política de Google Families.",
+    "trademark": "Google, Gemini, YouTube, Gmail, Google Drive, Google Photos y Google Docs son marcas registradas de Google LLC."
+  }
+}

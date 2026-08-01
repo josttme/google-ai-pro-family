@@ -1,0 +1,336 @@
+---
+import copy from "../data/copy.json";
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = copy.seo.description,
+  ogImage = copy.seo.ogImage,
+} = Astro.props;
+
+const siteUrl = copy.seo.canonical;
+const pricing = copy.pricing;
+
+// JSON-LD Structured Data — construido dinámicamente desde copy.json
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Google AI Pro (5TB) + YouTube Premium - Grupo Familiar Compartido",
+  description: copy.seo.description,
+  category: "SoftwareSubscription",
+  offers: {
+    "@type": "Offer",
+    price: pricing.monthlyFee.replace(".", ""),
+    priceCurrency: "ARS",
+    availability: "https://schema.org/LimitedAvailability",
+    availabilityStarts: "2026-01-01",
+    url: siteUrl,
+    eligibleQuantity: {
+      "@type": "QuantitativeValue",
+      value: pricing.availableSlots,
+      unitText: "cupos",
+    },
+    priceValidUntil: "2026-12-31",
+    seller: {
+      "@type": "Person",
+      name: "Administrador del Grupo Familiar",
+    },
+  },
+  brand: {
+    "@type": "Brand",
+    name: "Google",
+  },
+});
+---
+
+<!doctype html>
+<html lang="es" dir="ltr">
+  <head>
+    <!-- ─── META PRIMARIOS ─── -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- CSP como meta (defensa en profundidad — el header es la fuente primaria en producción) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; script-src 'self' 'unsafe-inline'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="theme-color" content="#020617" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- DNS Prefetch & Preconnect (early hints) -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://wa.me" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- ─── OPEN GRAPH ─── -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={copy.seo.siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={new URL(ogImage, siteUrl).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:locale" content={copy.seo.locale} />
+    <meta property="og:locale:alternate" content="es_ES" />
+
+    <!-- ─── TWITTER CARD ─── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@googleaifamily" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, siteUrl).href} />
+    <meta name="twitter:image:alt" content="Google AI Pro (5TB) + YouTube Premium por solo $12.000 ARS/mes. 77% de ahorro." />
+
+    <!-- ─── GEO / REGIONAL ─── -->
+    <meta name="geo.region" content="AR" />
+    <meta name="geo.placename" content="Argentina" />
+    <meta name="geo.country" content="AR" />
+
+    <!-- ─── FAVICON & PWA ─── -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="mask-icon" href="/favicon.svg" color="#6366f1" />
+    <meta name="application-name" content="Google AI Pro" />
+    <meta name="apple-mobile-web-app-title" content="Google AI Pro" />
+
+    <!-- ─── FUENTES: subset Latin + carga asíncrona sin FOIT ─── -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&text=&display=swap"
+      crossorigin="anonymous"
+      fetchpriority="high"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- ─── JSON-LD ─── -->
+    <script type="application/ld+json" set:html={jsonLd}></script>
+  </head>
+
+  <body
+    class="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-gemini-500/40 selection:text-white"
+  >
+    <!-- Skip-to-content link (a11y) -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-gemini-500 focus:text-white focus:font-bold focus:shadow-lg"
+    >
+      Saltar al contenido principal
+    </a>
+
+    <!-- Textura de fondo: dot grid sutil -->
+    <div
+      class="fixed inset-0 z-0 pointer-events-none opacity-[0.012]"
+      style="background-image: radial-gradient(circle, rgb(148 163 184) 1px, transparent 1px); background-size: 32px 32px;"
+      aria-hidden="true"
+    >
+    </div>
+
+    <!-- Gradientes ambientales -->
+    <div
+      class="fixed top-0 left-1/4 w-[800px] h-[600px] bg-gemini-600/6 rounded-full blur-[180px] pointer-events-none z-0 motion-safe:animate-float"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="fixed bottom-0 right-1/4 w-[600px] h-[400px] bg-purple-600/4 rounded-full blur-[150px] pointer-events-none z-0"
+      aria-hidden="true"
+    >
+    </div>
+
+    <!-- Contenido principal -->
+    <main id="main-content" class="relative z-10" tabindex="-1">
+      <slot />
+    </main>
+
+    <!-- Floating Mobile CTA Bar (CSS-only) -->
+    <div
+      class="fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-xl border-t border-slate-800/80 p-3 sm:hidden supports-backdrop-filter:bg-slate-950/85"
+      role="complementary"
+      aria-label="Acceso rápido a WhatsApp"
+    >
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex flex-col min-w-0">
+          <span class="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Desde</span>
+          <span class="text-lg font-extrabold text-white leading-tight">
+            ${pricing.monthlyFee}
+            <span class="text-[10px] font-normal text-slate-400">{pricing.currency}/mes</span>
+          </span>
+          <span class="text-[10px] text-gemini-400 font-semibold truncate">
+            {pricing.savingsPercentage}% OFF · {pricing.availableSlots} cupos
+          </span>
+        </div>
+        <a
+          href={`https://wa.me/${copy.contact.whatsappNumber}?text=${encodeURIComponent(copy.contact.whatsappMessage)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Reservar cupo por WhatsApp — Abre conversación en app externa"
+          class="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-linear-to-r from-gemini-500 to-purple-600 text-white font-bold text-sm hover:from-gemini-600 hover:to-purple-700 transition-all duration-200 active:scale-95 shadow-lg shadow-gemini-500/25"
+        >
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+          </svg>
+          Reservar cupo
+        </a>
+      </div>
+    </div>
+
+    <!-- Spacer para compensar la floating bar en mobile -->
+    <div class="h-20 sm:hidden" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════════════════════════════════════
+         VIDEO PLAYER ENGINE — Una sola instancia para todos los videos
+         ════════════════════════════════════════════════════════════ -->
+    <script is:inline>
+      (function setupAllVideoPlayers() {
+        const players = document.querySelectorAll('.video-player[data-player-id]');
+        players.forEach(function(wrapper) {
+          initPlayer(wrapper);
+        });
+
+        function initPlayer(wrapper) {
+          if (wrapper.dataset.vpReady) return;
+          wrapper.dataset.vpReady = '1';
+
+          var video = wrapper.querySelector('video');
+          if (!video) return;
+
+          var loadingOverlay = wrapper.querySelector('.video-loading-overlay');
+          var playBtn = wrapper.querySelector('[data-action="toggle-play"]');
+          var muteBtn = wrapper.querySelector('[data-action="toggle-mute"]');
+          var audioIndicator = wrapper.querySelector('.audio-indicator');
+          var iconPlay = wrapper.querySelector('.icon-play');
+          var iconPause = wrapper.querySelector('.icon-pause');
+          var iconMuted = wrapper.querySelector('.icon-muted');
+          var iconUnmuted = wrapper.querySelector('.icon-unmuted');
+          var isPlaying = false;
+          var isMuted = true;
+          var hideIndicatorTimer = 0;
+
+          // ── Iniciar reproducción ──
+          function tryPlay() {
+            var promise = video.play();
+            if (promise && promise.then) {
+              promise.then(function() {
+                setPlaying(true);
+              }).catch(function() {
+                // Autoplay bloqueado por el navegador — se activa al hacer scroll
+              });
+            }
+          }
+
+          function setPlaying(state) {
+            isPlaying = state;
+            if (iconPlay && iconPause) {
+              iconPlay.classList.toggle('hidden', state);
+              iconPause.classList.toggle('hidden', !state);
+            }
+            if (state && loadingOverlay) {
+              loadingOverlay.style.opacity = '0';
+              setTimeout(function() {
+                if (loadingOverlay) loadingOverlay.style.display = 'none';
+              }, 500);
+            }
+          }
+
+          function setMuted(state) {
+            isMuted = state;
+            video.muted = state;
+            if (iconMuted && iconUnmuted) {
+              iconMuted.classList.toggle('hidden', !state);
+              iconUnmuted.classList.toggle('hidden', state);
+            }
+            if (!state && audioIndicator) {
+              audioIndicator.style.opacity = '1';
+              clearTimeout(hideIndicatorTimer);
+              hideIndicatorTimer = setTimeout(function() {
+                if (audioIndicator) audioIndicator.style.opacity = '0';
+              }, 2000);
+            }
+          }
+
+          // ── Eventos del video ──
+          video.addEventListener('playing', function() { setPlaying(true); });
+          video.addEventListener('pause', function() { setPlaying(false); });
+          video.addEventListener('ended', function() { setPlaying(false); });
+
+          // ── Click en el video → toggle play/pause ──
+          video.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (video.paused) {
+              video.play().then(function() { setPlaying(true); }).catch(function(){});
+            } else {
+              video.pause();
+              setPlaying(false);
+            }
+          });
+
+          // ── Play/Pause button ──
+          if (playBtn) {
+            playBtn.addEventListener('click', function(e) {
+              e.stopPropagation();
+              if (video.paused) {
+                video.play().then(function() { setPlaying(true); }).catch(function(){});
+              } else {
+                video.pause();
+                setPlaying(false);
+              }
+            });
+          }
+
+          // ── Mute/Unmute button ──
+          if (muteBtn) {
+            muteBtn.addEventListener('click', function(e) {
+              e.stopPropagation();
+              setMuted(!video.muted);
+            });
+          }
+
+          // ── IntersectionObserver: play al entrar en viewport, pause al salir ──
+          if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function(entries) {
+              entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                  video.play().then(function() { setPlaying(true); }).catch(function(){});
+                } else {
+                  video.pause();
+                  setPlaying(false);
+                }
+              });
+            }, { threshold: 0.35 });
+            observer.observe(wrapper);
+          }
+
+          // ── Iniciar reproducción (el navegador lo permite porque está muted + autoplay) ──
+          tryPlay();
+        }
+      })();
+    </script>
+  </body>
+</html>
