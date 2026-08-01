@@ -1,0 +1,64 @@
+# ═══════════════════════════════════════════════════════════════════
+# Lighthouse CI — GitHub Actions
+# ═══════════════════════════════════════════════════════════════════
+# Se ejecuta en cada PR contra main y en cada push a main.
+# Ejecuta Lighthouse 3 veces y bloquea si las métricas bajan.
+
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    name: Lighthouse Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Run Lighthouse CI
+        run: |
+          npx @lhci/cli autorun \
+            --collect.staticDistDir=./dist \
+            --collect.numberOfRuns=3 \
+            --assert.preset=lighthouse:recommended \
+            --upload.target=temporary-public-storage
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Performance Budget Check
+        run: |
+          echo "📊 Performance Budget Results"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          HTML_SIZE=$(wc -c < dist/index.html)
+          CSS_SIZE=$(wc -c < dist/_astro/index.*.css)
+          JS_COUNT=$(find dist -name '*.js' -o -name '*.mjs' | wc -l)
+          echo "HTML:     $HTML_SIZE bytes ($(echo "scale=1; $HTML_SIZE / 1024" | bc) KB)"
+          echo "CSS:      $CSS_SIZE bytes ($(echo "scale=1; $CSS_SIZE / 1024" | bc) KB)"
+          echo "JS files: $JS_COUNT (target: 0)"
+          echo ""
+          if [ "$JS_COUNT" -gt 0 ]; then
+            echo "❌ ERROR: JavaScript files detected in build output!"
+            exit 1
+          fi
+          echo "✅ Zero JavaScript — budget PASSED"

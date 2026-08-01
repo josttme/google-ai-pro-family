@@ -1,0 +1,21 @@
+# https://www.robotstxt.org/robotstxt.html
+# Proyecto: Google AI Pro + YouTube Premium — Landing Page
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://googleaifamily.ar/sitemap-index.xml
+
+# Crawl-delay: respetuoso con crawlers
+Crawl-delay: 10
+
+# Proteger directorios que no deben indexarse
+Disallow: /_astro/
+
+# Bloquear crawlers malintencionados (opcional)
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
