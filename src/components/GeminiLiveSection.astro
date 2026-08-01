@@ -1,0 +1,130 @@
+---
+// ═══════════════════════════════════════════════════════════════════
+// GeminiLiveSection — Muestra Gemini Live Camera
+// Assets: src/assets/gemini-ia-family/gemini-live-camera/
+// ═══════════════════════════════════════════════════════════════════
+import VideoPlayer from "./VideoPlayer.astro";
+import { buildWhatsAppLink, WHATSAPP_ICON_PATH } from "../lib/whatsapp";
+
+const waLink = buildWhatsAppLink();
+const posterSrc = "/assets/gemini-live-camera/muestra.png";
+const videoSrc = "/assets/gemini-live-camera/demostracion-principal.mp4";
+---
+
+<section class="py-20 md:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <!-- ═══ COL IZQ: Contenido ═══ -->
+    <div class="order-2 lg:order-1">
+      <span
+        class="inline-block text-xs font-bold tracking-[0.2em] text-gemini-400 uppercase mb-4"
+      >
+        Gemini Live
+      </span>
+      <h2
+        class="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-white tracking-tight mb-5 leading-[1.08]"
+      >
+        Hablá con Gemini como si fuera una persona real
+      </h2>
+      <p class="text-slate-400 text-base leading-relaxed mb-6">
+        Gemini Live Camera te permite mostrarle al modelo lo que estás viendo en
+        tiempo real. Apuntá la cámara, hacé preguntas, y Gemini te responde al
+        instante analizando lo que ve. Es como tener un experto al lado tuyo,
+        viendo lo mismo que vos.
+      </p>
+
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-start gap-3">
+          <div
+            class="w-6 h-6 rounded-full bg-gemini-500/15 border border-gemini-500/30 flex items-center justify-center shrink-0 mt-0.5"
+          >
+            <svg
+              class="w-3.5 h-3.5 text-gemini-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="3"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+          </div>
+          <span class="text-slate-300 text-sm"
+            >Reconocimiento visual en tiempo real con tu cámara</span
+          >
+        </li>
+        <li class="flex items-start gap-3">
+          <div
+            class="w-6 h-6 rounded-full bg-gemini-500/15 border border-gemini-500/30 flex items-center justify-center shrink-0 mt-0.5"
+          >
+            <svg
+              class="w-3.5 h-3.5 text-gemini-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="3"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+          </div>
+          <span class="text-slate-300 text-sm"
+            >Respuestas por voz, naturales y conversacionales</span
+          >
+        </li>
+        <li class="flex items-start gap-3">
+          <div
+            class="w-6 h-6 rounded-full bg-gemini-500/15 border border-gemini-500/30 flex items-center justify-center shrink-0 mt-0.5"
+          >
+            <svg
+              class="w-3.5 h-3.5 text-gemini-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="3"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+          </div>
+          <span class="text-slate-300 text-sm"
+            >Ideal para aprender, reparar cosas o explorar lugares nuevos</span
+          >
+        </li>
+      </ul>
+
+      <a
+        href={waLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-linear-to-r from-gemini-500 to-purple-600 text-white font-bold text-sm hover:from-gemini-600 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-gemini-500/20"
+      >
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"
+          ><path d={WHATSAPP_ICON_PATH}></path></svg
+        >
+        Quiero probar Gemini Live — Unirme al grupo
+      </a>
+    </div>
+
+    <!-- ═══ COL DER: Video demostración ═══ -->
+    <div class="order-1 lg:order-2">
+      <div class="relative">
+        {/* Glow decorativo detrás del video */}
+        <div
+          class="absolute -inset-4 bg-gemini-500/10 rounded-3xl blur-[60px] pointer-events-none"
+        >
+        </div>
+
+        <VideoPlayer
+          src={videoSrc}
+          poster={posterSrc}
+          aspectRatio="5/4"
+          rounded="rounded-3xl"
+          class="shadow-2xl shadow-gemini-500/15 ring-1 ring-gemini-500/20"
+        />
+      </div>
+    </div>
+  </div>
+</section>

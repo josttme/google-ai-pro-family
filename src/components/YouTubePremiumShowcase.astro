@@ -1,0 +1,99 @@
+---
+// ═══════════════════════════════════════════════════════════════════
+// YouTubePremiumShowcase — Beneficios de YouTube Premium
+// Assets: src/assets/gemini-ia-family/youtube-premium/ (animated WebP)
+// ═══════════════════════════════════════════════════════════════════
+import { buildWhatsAppLink } from "../lib/whatsapp";
+
+const waLink = buildWhatsAppLink();
+const assetBase = "/assets/youtube-premium";
+
+const features = [
+  {
+    title: "Sin anuncios. Ni uno solo.",
+    description:
+      "Videos, shorts, transmisiones en vivo. Todo sin interrupciones publicitarias. Para siempre.",
+    media: `${assetBase}/videos-sin-anuncios-ilimitados-animado.webp`,
+    alt: "Animación mostrando YouTube sin anuncios — videos ilimitados sin interrupciones",
+    color: "red",
+  },
+  {
+    title: "Reproducción en segundo plano",
+    description:
+      "Escuchá tus videos con la pantalla apagada o mientras usás otras apps. Ideal para podcasts, música y entrevistas largas.",
+    media: `${assetBase}/reproduccion-en-segundo-plano.webp`,
+    alt: "Animación mostrando reproducción en segundo plano — video sonando con pantalla apagada",
+    color: "red",
+  },
+  {
+    title: "YouTube Music Premium incluido",
+    description:
+      "Todo el catálogo de música del mundo. Sin anuncios. Con audio en alta fidelidad. Descargá tus playlists y escuchalas offline.",
+    media: `${assetBase}/youtube-music.webp`,
+    alt: "Animación de YouTube Music — streaming musical sin anuncios con calidad premium",
+    color: "red",
+  },
+  {
+    title: "Descargas offline",
+    description:
+      "Guardá videos y música para ver cuando no tengas conexión. Viajes, vuelos, subte. Tu entretenimiento siempre disponible.",
+    media: `${assetBase}/videos-offline.webp`,
+    alt: "Animación mostrando descarga de videos para ver sin conexión a internet",
+    color: "red",
+  },
+];
+---
+
+<section class="py-20 md:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
+  <!-- ═══ ENCABEZADO ═══ -->
+  <div class="text-center mb-16 md:mb-20">
+    <span
+      class="inline-block text-xs font-bold tracking-[0.2em] text-red-400 uppercase mb-4"
+    >
+      YouTube Premium
+    </span>
+    <h2
+      class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-5"
+    >
+      La experiencia YouTube que merecés
+    </h2>
+    <p
+      class="text-slate-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
+    >
+      Una vez que probás YouTube sin anuncios, no hay vuelta atrás. Todo tu
+      contenido favorito, sin interrupciones, con calidad premium.
+    </p>
+  </div>
+
+  <!-- ═══ GRID: 2×2 features con WebP animados ═══ -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
+    {
+      features.map((f) => (
+        <div class="relative overflow-hidden rounded-3xl border border-slate-800/70 bg-slate-900/60  ">
+          {/* Glow rojo sutil */}
+          <div class="absolute top-0 right-0 w-56 h-56 bg-red-500/5 rounded-full blur-[80px] pointer-events-none group-hover:bg-red-500/10 transition-all" />
+
+          <div class="relative z-10 flex flex-col sm:flex-row gap-6 items-start">
+            {/* WebP animado */}
+            <div class="shrink-0 w-full sm:w-52 h-52 rounded-2xl overflow-hidden border border-slate-700/60 bg-slate-950/80 flex items-center justify-center">
+              <img
+                src={f.media}
+                alt={f.alt}
+                loading="lazy"
+                class="w-full h-full object-contain"
+              />
+            </div>
+
+            {/* Contenido */}
+            <div class="grid grid-cols-1 w-full h-full place-self-center-center self-center">
+              <h3 class="text-xl font-bold text-white mb-2">{f.title}</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                {f.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

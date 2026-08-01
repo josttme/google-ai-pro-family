@@ -1,0 +1,149 @@
+---
+// ═══════════════════════════════════════════════════════════════════
+// ImageGenSection — Galería de generación de imágenes con IA
+// Assets: src/assets/gemini-ia-family/imagen/
+// ═══════════════════════════════════════════════════════════════════
+import VideoPlayer from "./VideoPlayer.astro";
+import { buildWhatsAppLink, WHATSAPP_ICON_PATH } from "../lib/whatsapp";
+
+const waLink = buildWhatsAppLink();
+const imgBasePath = "/assets/imagen";
+const imageSamples = [
+  {
+    src: `${imgBasePath}/imagen-muestra-1.png`,
+    alt: "Imagen generada por Gemini — paisaje futurista con montañas y neones",
+  },
+  {
+    src: `${imgBasePath}/imagen-muestra-2.png`,
+    alt: "Imagen generada por Gemini — retrato hiperrealista con iluminación cinematográfica",
+  },
+  {
+    src: `${imgBasePath}/imagen-muestra-3.png`,
+    alt: "Imagen generada por Gemini — diseño de producto minimalista en estudio",
+  },
+  {
+    src: `${imgBasePath}/imagen-muestra-4.png`,
+    alt: "Imagen generada por Gemini — arte conceptual abstracto con colores vibrantes",
+  },
+];
+---
+
+<section
+  class="py-20 md:py-28 px-4 sm:px-6 max-w-7xl mx-auto border-y border-slate-800/40 bg-slate-950/40"
+>
+  <!-- ═══ ENCABEZADO ═══ -->
+  <div class="text-center mb-16 md:mb-20">
+    <span
+      class="inline-block text-xs font-bold tracking-[0.2em] text-purple-400 uppercase mb-4"
+    >
+      Imagen 3 • Generación de Imágenes
+    </span>
+    <h2
+      class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-5"
+    >
+      Creá imágenes increíbles con inteligencia artificial
+    </h2>
+    <p
+      class="text-slate-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
+    >
+      Describí lo que querés ver y Gemini lo genera en segundos. Fotografías
+      hiperrealistas, ilustraciones, arte conceptual, diseños de producto. Sin
+      límites creativos.
+    </p>
+  </div>
+
+  <!-- ═══ GRID: Video + Imágenes ═══ -->
+  <div class="grid grid-cols-1">
+    {/* Video principal — ocupa 3 columnas */}
+    <div class="lg:col-span-3 relative">
+      <div
+        class="absolute -inset-3 bg-purple-500/8 rounded-3xl blur-[50px] pointer-events-none"
+      >
+      </div>
+      <VideoPlayer
+        src={`${imgBasePath}/video-principal.mp4`}
+        poster={imageSamples[0].src}
+        aspectRatio="16/9"
+        rounded="rounded-2xl"
+        class="shadow-2xl"
+      />
+    </div>
+  </div>
+
+  {/* ═══ ROW INFERIOR: 2 imágenes + CTA ═══ */}
+  <div class="grid grid-cols-1 mt-5 sm:grid-cols-2 gap-5">
+    <div
+      class="relative overflow-hidden rounded-2xl border border-slate-800/70 bg-slate-900/60"
+    >
+      <img
+        src={imageSamples[0].src}
+        alt={imageSamples[0].alt}
+        loading="lazy"
+        class="w-full h-auto object-cover"
+        style="aspect-ratio: 16/9"
+      />
+    </div>
+    <div
+      class="relative overflow-hidden rounded-2xl border border-slate-800/70 bg-slate-900/60"
+    >
+      <img
+        src={imageSamples[3].src}
+        alt={imageSamples[3].alt}
+        loading="lazy"
+        class="w-full h-auto object-cover"
+        style="aspect-ratio: 16/9"
+      />
+    </div>
+    <div
+      class="relative overflow-hidden rounded-2xl border border-slate-800/70 bg-slate-900/60"
+    >
+      <img
+        src={imageSamples[1].src}
+        alt={imageSamples[1].alt}
+        loading="lazy"
+        class="w-full h-auto object-cover"
+        style="aspect-ratio: 16/9"
+      />
+    </div>
+    <div
+      class="relative overflow-hidden rounded-2xl border border-slate-800/70 bg-slate-900/60"
+    >
+      <img
+        src={imageSamples[2].src}
+        alt={imageSamples[2].alt}
+        loading="lazy"
+        class="w-full h-auto object-cover"
+        style="aspect-ratio: 16/9"
+      />
+    </div>
+  </div>
+  {/* CTA card */}
+
+  <div
+    class="flex flex-col items-center justify-center text-center p-8 rounded-2xl border border-purple-500/30 bg-linear-to-br from-purple-950/40 via-slate-900/80 to-slate-900/8 mt-10"
+  >
+    <div
+      class="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center mb-4 text-2xl"
+    >
+      🎨
+    </div>
+    <h4 class="text-white font-bold text-lg mb-2">
+      ¿Querés crear imágenes así?
+    </h4>
+    <p class="text-slate-400 text-sm mb-5">
+      Con Gemini Advanced tenés generación de imágenes ilimitada incluida en el
+      plan.
+    </p>
+    <a
+      href={waLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-linear-to-r from-gemini-500 to-purple-600 text-white font-bold text-sm hover:from-gemini-600 hover:to-purple-700 transition-all shadow-lg shadow-gemini-500/20"
+    >
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"
+        ><path d={WHATSAPP_ICON_PATH}></path></svg
+      >
+      Activar Gemini Advanced
+    </a>
+  </div>
+</section>

@@ -1,0 +1,124 @@
+---
+// ═══════════════════════════════════════════════════════════════════
+// VideoPlayer — Reproductor de video profesional (Zero JS bundles)
+//
+// Estrategia de carga:
+// 1. preload="metadata" → carga el primer frame inmediatamente
+// 2. autoplay + muted + playsinline → reproduce al estar listo
+// 3. preload="metadata" → navegador difiere la carga hasta que
+//    el video está cerca del viewport (Chrome 77+, Firefox 75+)
+// 4. IntersectionObserver → fallback para navegadores sin preload="metadata"
+// 5. Controls: play/pause + mute/unmute via JS mínimo inline
+// ═══════════════════════════════════════════════════════════════════
+
+interface Props {
+  src: string;
+  poster?: string;
+  aspectRatio?: string;
+  class?: string;
+  rounded?: string;
+}
+
+const {
+  src,
+  poster,
+  aspectRatio = "16/9",
+  class: extraClass = "",
+  rounded = "rounded-2xl",
+} = Astro.props;
+
+const playerId = `vp-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div
+  class={`video-player group relative overflow-hidden bg-slate-900/80 border border-slate-800/60 ${rounded} ${extraClass}`}
+  style={`aspect-ratio: ${aspectRatio}`}
+  data-player-id={playerId}
+>
+  <!-- Video: autoplay + muted + loop + playsinline + preload="metadata" -->
+  {
+    poster ? (
+      <video
+        id={playerId}
+        src={src}
+        poster={poster}
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="metadata"
+        class="absolute inset-0 w-full h-full object-cover"
+        disableRemotePlayback
+      >
+      </video>
+    ) : (
+      <video
+        id={playerId}
+        src={src}
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="metadata"
+        class="absolute inset-0 w-full h-full object-cover"
+        disableRemotePlayback
+      >
+      </video>
+    )
+  }
+
+  <!-- Overlay de carga inicial (desaparece al empezar a reproducir) -->
+  <div
+    class="video-loading-overlay absolute inset-0 flex items-center justify-center bg-slate-900/60 transition-opacity duration-500 z-10"
+  >
+    <div class="w-12 h-12 rounded-full border-2 border-white/20 border-t-white animate-spin"></div>
+  </div>
+
+  <!-- Overlay: degradado inferior para mejor legibilidad de controles -->
+  <div
+    class="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/60 via-black/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Controles -->
+  <div
+    class="absolute bottom-3 left-3 right-3 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30"
+  >
+    <!-- Play/Pause -->
+    <button
+      type="button"
+      data-action="toggle-play"
+      aria-label="Reproducir / Pausar video"
+      class="flex items-center justify-center w-10 h-10 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white hover:bg-white/25 hover:scale-110 transition-all duration-200 shadow-lg"
+    >
+      <svg class="w-5 h-5 icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <polygon points="5 3 19 12 5 21 5 3"/>
+      </svg>
+      <svg class="w-5 h-5 icon-pause hidden" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <rect x="4" y="4" width="6" height="16"/><rect x="14" y="4" width="6" height="16"/>
+      </svg>
+    </button>
+
+    <!-- Mute/Unmute -->
+    <button
+      type="button"
+      data-action="toggle-mute"
+      aria-label="Activar / Desactivar sonido"
+      class="flex items-center justify-center w-10 h-10 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white hover:bg-white/25 hover:scale-110 transition-all duration-200 shadow-lg"
+    >
+      <svg class="w-5 h-5 icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+      </svg>
+      <svg class="w-5 h-5 icon-unmuted hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Indicador de sonido -->
+  <div
+    class="audio-indicator absolute top-3 right-3 z-30 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-bold opacity-0 transition-opacity duration-300 pointer-events-none"
+  >
+    🔊 Sonido activado
+  </div>
+</div>

@@ -1,0 +1,155 @@
+---
+// ═══════════════════════════════════════════════════════════════════
+// MediaHeroSection — Hero visual con video + Gemini profile
+// Assets: complementos/ + video/
+// ═══════════════════════════════════════════════════════════════════
+import VideoPlayer from "./VideoPlayer.astro";
+import { buildWhatsAppLink, WHATSAPP_ICON_PATH } from "../lib/whatsapp";
+
+const waLink = buildWhatsAppLink();
+const assetComplementos = "/assets/complementos";
+const assetVideo = "/assets/video";
+---
+
+<section class="py-20 md:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
+  <!-- ═══ ENCABEZADO ═══ -->
+  <div class="text-center mb-16 md:mb-20">
+    {/* Gemini profile badge */}
+    <div
+      class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gemini-500/10 border border-gemini-500/25 mb-8 backdrop-blur-md"
+    >
+      <img
+        src={`${assetComplementos}/foto-perfil-gemini-con-marco-pro.png`}
+        alt="Gemini Advanced Pro — Insignia oficial de Google"
+        class="w-8 h-8 rounded-full"
+        width="32"
+        height="32"
+      />
+      <span class="text-gemini-400 text-sm font-bold">Gemini Advanced Pro</span>
+      <span class="text-slate-600 text-sm">|</span>
+      <span class="text-slate-400 text-sm">Incluido en tu plan</span>
+    </div>
+
+    <h2
+      class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-5"
+    >
+      La inteligencia artificial más potente de Google,<br />
+      <span class="text-gradient-gemini">ahora en tu bolsillo</span>
+    </h2>
+    <p
+      class="text-slate-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
+    >
+      Gemini Advanced entiende, razona, crea imágenes, analiza documentos y
+      hasta te ve en tiempo real con la cámara. Todo integrado en las apps de
+      Google que ya usás todos los días.
+    </p>
+  </div>
+
+  <!-- ═══ VIDEO PRINCIPAL ═══ -->
+  <div class="max-w-5xl mx-auto mb-14">
+    <div class="relative">
+      {/* Glow dramático */}
+      <div
+        class="absolute -inset-6 bg-gemini-500/8 rounded-3xl blur-[80px] pointer-events-none"
+      >
+      </div>
+      <div
+        class="absolute -inset-2 bg-purple-500/5 rounded-3xl blur-[60px] pointer-events-none"
+      >
+      </div>
+
+      <VideoPlayer
+        src={`${assetVideo}/video-principal.mp4`}
+        poster={`${assetComplementos}/foto-perfil-gemini-con-marco-pro.png`}
+        aspectRatio="16/9"
+        rounded="rounded-3xl"
+        class="shadow-2xl shadow-gemini-500/10 ring-1 ring-gemini-500/15"
+      />
+
+      {/* Badge flotante sobre el video */}
+      <div class="absolute top-4 left-4 z-20">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-gemini-500/30 text-xs font-bold text-gemini-400"
+        >
+          <span class="relative flex h-2 w-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gemini-400 opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex rounded-full h-2 w-2 bg-gemini-400"
+            ></span>
+          </span>
+          Demo en vivo
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ROW DE VIDEOS SECUNDARIOS + GIF ANIMADO ═══ -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto mb-12">
+    {/* Video 1 */}
+    <div class="relative">
+      <VideoPlayer
+        src={`${assetVideo}/video-muestra-1.mp4`}
+        aspectRatio="4/5"
+        rounded="rounded-2xl"
+        class="shadow-xl"
+      />
+    </div>
+
+    {/* Video 2 */}
+    <div class="relative">
+      <VideoPlayer
+        src={`${assetVideo}/video-muestra-2.mp4`}
+        aspectRatio="4/5"
+        rounded="rounded-2xl"
+        class="shadow-xl"
+      />
+    </div>
+
+    {/* Video 3 */}
+    <div class="relative">
+      <VideoPlayer
+        src={`${assetVideo}/video-muestra-3.mp4`}
+        aspectRatio="4/5"
+        rounded="rounded-2xl"
+        class="shadow-xl"
+      />
+    </div>
+  </div>
+
+  {/* ═══ ANIMACIÓN: logos formando Gemini ═══ */}
+  <div class="max-w-5xl mx-auto mb-10">
+    <h2
+      class="text-3xl sm:text-5xl py-10 lg:text-5xl text-center font-extrabold text-white tracking-tight mb-5"
+    >
+      Gemini integrado en Gmail, Google Photos, YouTube y todos los productos
+      Google
+    </h2>
+    <div
+      class="rounded-2xl overflow-hidden max-w-xl mx-auto border border-slate-800/60 bg-slate-950/80"
+    >
+      <VideoPlayer
+        src={`${assetComplementos}/video-logos-gmail-fotos-youtube-google-formando-el-logo-gemini.mp4`}
+        aspectRatio="1/1"
+        rounded="rounded-none"
+        class="shadow-inner"
+      />
+    </div>
+  </div>
+
+  {/* ═══ CTA ═══ */}
+  <div class="text-center">
+    <a
+      href={waLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-linear-to-r from-gemini-500 to-purple-600 text-white font-bold text-lg hover:from-gemini-600 hover:to-purple-700 transition-all duration-300 shadow-xl shadow-gemini-500/25 hover:shadow-gemini-500/40 hover:-translate-y-0.5"
+    >
+      <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true"
+        ><path d={WHATSAPP_ICON_PATH}></path></svg
+      >
+      Quiero Gemini Advanced — $12.000 ARS/mes
+    </a>
+  </div>
+</section>
