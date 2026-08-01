@@ -1,0 +1,76 @@
+---
+import copy from "../data/copy.json";
+import { buildWhatsAppLink, WHATSAPP_ICON_PATH } from "../lib/whatsapp";
+
+const waLink = buildWhatsAppLink();
+---
+
+<footer class="py-16 px-4 sm:px-6 border-t border-slate-800/60 bg-slate-950/90">
+  <div class="max-w-6xl mx-auto">
+    <!-- ═══ TOP: Grid 3 columnas ═══ -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+      {/* Col 1: Marca */}
+      <div>
+        <p class="text-white font-bold text-base mb-3">
+          {copy.footer.brandName}
+        </p>
+        <p class="text-slate-500 text-xs leading-relaxed max-w-xs">
+          {copy.footer.text}
+        </p>
+      </div>
+
+      {/* Col 2: Links rápidos */}
+      <div class="text-center">
+        <p class="text-slate-400 font-semibold text-xs uppercase tracking-wider mb-4">
+          ¿Tenés dudas?
+        </p>
+        <a
+          href={waLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-sm hover:bg-emerald-500/20 transition-all"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d={WHATSAPP_ICON_PATH}/>
+          </svg>
+          Consultame por WhatsApp
+        </a>
+      </div>
+
+      {/* Col 3: Estado */}
+      <div class="text-center md:text-right">
+        <p class="text-slate-400 font-semibold text-xs uppercase tracking-wider mb-4">
+          Estado del grupo
+        </p>
+        <div class="flex items-center justify-center md:justify-end gap-2">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <span class="text-xs text-slate-400 font-medium">
+            Activo • {copy.pricing.availableSlots} cupos disponibles
+          </span>
+        </div>
+        <p class="text-slate-500 text-xs mt-2">
+          {copy.pricing.paymentMethods.join(" • ")}
+        </p>
+      </div>
+    </div>
+
+    {/* ═══ DIVIDER ═══ */}
+    <hr class="glass mb-8" />
+
+    {/* ═══ BOTTOM: Copyright + legal ═══ */}
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-slate-600 text-xs">
+        © {new Date().getFullYear()} • {copy.footer.copyright}
+      </p>
+      <p class="text-slate-700 text-[10px] text-center max-w-lg">
+        {copy.footer.trademark}
+      </p>
+      <p class="text-slate-600 text-xs">
+        {copy.footer.slots}
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,91 @@
+---
+import copy from "../data/copy.json";
+import { buildWhatsAppLink, WHATSAPP_ICON_PATH, CHECKMARK_ICON_PATH } from "../lib/whatsapp";
+
+const waLink = buildWhatsAppLink();
+const { badge, title, subtitle, ctaText, disclaimer, trustItems } = copy.ctaSection;
+---
+
+<section class="py-20 md:py-32 px-4 sm:px-6 relative overflow-hidden">
+  {/* ═══ FONDO DRAMÁTICO ═══ */}
+  {/* Glow principal */}
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gemini-600/10 rounded-full blur-[150px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+  {/* Glow secundario (rojo/urgencia) */}
+  <div
+    class="absolute top-1/3 right-1/4 w-[300px] h-[200px] bg-red-500/6 rounded-full blur-[100px] pointer-events-none"
+    aria-hidden="true"
+  ></div>
+
+  {/* ═══ PARTÍCULAS DECORATIVAS ═══ */}
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div class="absolute top-[10%] left-[15%] w-1.5 h-1.5 rounded-full bg-gemini-400/20 motion-safe:animate-float"></div>
+    <div class="absolute top-[60%] right-[10%] w-1 h-1 rounded-full bg-purple-400/15 motion-safe:animate-float-slow anim-delay-300"></div>
+    <div class="absolute top-[30%] right-[20%] w-0.5 h-0.5 rounded-full bg-gemini-300/20 motion-safe:animate-float anim-delay-100"></div>
+  </div>
+
+  <div class="max-w-3xl mx-auto text-center relative z-10">
+    {/* ═══ BADGE DE URGENCIA ═══ */}
+    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/25 text-red-400 text-sm font-bold mb-8 animate-glow-pulse backdrop-blur-md">
+      <span class="relative flex h-3 w-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+      </span>
+      {badge}
+    </div>
+
+    {/* ═══ TÍTULO ═══ */}
+    <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6 leading-[1.08]">
+      {title}
+    </h2>
+
+    <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto mb-12 leading-relaxed">
+      {subtitle}
+    </p>
+
+    {/* ═══ ÚLTIMO CUPO — Indicador dramático ═══ */}
+    <div class="flex items-center justify-center gap-4 mb-12">
+      <div
+        class="w-16 h-16 rounded-2xl border-2 border-red-500/50 bg-red-500/10 flex items-center justify-center text-2xl font-extrabold text-red-400 animate-glow-pulse"
+      >
+        1
+      </div>
+      <div class="text-left">
+        <p class="text-white font-bold text-base">Último cupo disponible</p>
+        <p class="text-slate-400 text-xs">El grupo está casi completo. Cuando se vaya, no hay más.</p>
+      </div>
+    </div>
+    <p class="text-xs text-slate-500 -mt-8 mb-12">
+      El espacio se asigna <strong class="text-slate-400">al primero que confirma el pago</strong>. Sin excepciones.
+    </p>
+
+    {/* ═══ CTA GIGANTE ═══ */}
+    <a
+      href={waLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group inline-flex flex-col sm:flex-row items-center gap-3 px-10 py-5 rounded-2xl bg-linear-to-r from-gemini-500 to-purple-600 text-white font-extrabold text-lg sm:text-xl hover:from-gemini-600 hover:to-purple-700 transition-all duration-300 shadow-2xl shadow-gemini-500/30 hover:shadow-gemini-500/50 hover:-translate-y-1 animate-glow-pulse"
+    >
+      <svg class="w-6 h-6 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24" aria-hidden="true">
+        <path d={WHATSAPP_ICON_PATH}/>
+      </svg>
+      {ctaText}
+    </a>
+
+    <p class="text-xs text-slate-500 mt-5">{disclaimer}</p>
+
+    {/* ═══ TRUST ITEMS ═══ */}
+    <div class="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-slate-600">
+      {trustItems.map((item: string) => (
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d={CHECKMARK_ICON_PATH}/>
+          </svg>
+          <span>{item}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

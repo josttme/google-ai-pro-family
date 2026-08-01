@@ -1,0 +1,85 @@
+---
+import { categoryColors } from "../lib/colors";
+import { CROSS_ICON_PATH } from "../lib/whatsapp";
+import copy from "../data/copy.json";
+---
+
+<section class="py-20 md:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
+  <!-- Encabezado -->
+  <div class="text-center mb-16 md:mb-20">
+    <span class="inline-block text-xs font-bold tracking-[0.2em] text-slate-500 uppercase mb-4">
+      {copy.benefitsBreakdown.badge}
+    </span>
+    <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-5">
+      {copy.benefitsBreakdown.title}
+    </h2>
+    <p class="text-slate-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
+      {copy.benefitsBreakdown.subtitle}
+    </p>
+  </div>
+
+  <!-- Categorías de beneficios -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+    {
+      copy.benefitsBreakdown.categories.map((cat) => {
+        const c = categoryColors[cat.color] ?? categoryColors.indigo;
+        return (
+          <div
+            class={`group bg-linear-to-b ${c.bg} border ${c.border} rounded-2xl p-6 hover:border-opacity-70 transition-all duration-300 card-lift`}
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div class={`w-10 h-10 rounded-xl ${c.iconBg} border ${c.border} flex items-center justify-center text-lg`}>
+                {cat.icon}
+              </div>
+              <h3 class={`text-lg font-bold ${c.text}`}>{cat.title}</h3>
+            </div>
+            <ul class="space-y-2.5">
+              {cat.benefits.map((b: string) => (
+                <li class="flex items-start gap-2.5 text-sm text-slate-300 leading-relaxed">
+                  <svg class={`w-4 h-4 mt-0.5 shrink-0 ${c.text}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })
+    }
+  </div>
+
+  <!-- Sección: Lo que NADIE puede ver -->
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-linear-to-br from-slate-900/80 via-slate-900/40 to-slate-900/80 border border-slate-800/70 rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="relative z-10">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-2xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-2xl">
+            🔒
+          </div>
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold text-white">
+              {copy.benefitsBreakdown.whatIsNotShared.title}
+            </h3>
+            <p class="text-slate-400 text-sm mt-0.5">
+              {copy.benefitsBreakdown.whatIsNotShared.subtitle}
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {copy.benefitsBreakdown.whatIsNotShared.items.map((item: string) => (
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800/50">
+              <svg class="w-5 h-5 text-red-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d={CROSS_ICON_PATH} />
+              </svg>
+              <span class="text-sm text-slate-300 font-medium">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

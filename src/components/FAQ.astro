@@ -1,0 +1,82 @@
+---
+import copy from "../data/copy.json";
+import { buildWhatsAppLink, WHATSAPP_ICON_PATH } from "../lib/whatsapp";
+
+const { badge, title, subtitle, items } = copy.faq;
+---
+
+<section class="py-20 md:py-28 px-4 sm:px-6 max-w-3xl mx-auto">
+  <!-- Encabezado -->
+  <div class="text-center mb-14">
+    <span class="inline-block text-xs font-bold tracking-[0.2em] text-slate-500 uppercase mb-4">
+      {badge}
+    </span>
+    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4 tracking-tight">
+      {title}
+    </h2>
+    <p class="text-slate-400 text-sm sm:text-base">
+      {subtitle}
+    </p>
+  </div>
+
+  <!-- FAQ Items (estático expandido — zero JS) -->
+  <div class="space-y-4">
+    {
+      items.map((item) => {
+        const isCTA = item.isCTA === true;
+
+        return (
+          <div
+            class={`group bg-slate-900/70 border rounded-2xl transition-all duration-300 ${
+              isCTA
+                ? "border-gemini-500/40 bg-gemini-950/30"
+                : "border-slate-800/70 hover:border-slate-700"
+            }`}
+          >
+            <div class="p-5 sm:p-6">
+              <div class="flex items-start gap-4">
+                {/* Ícono de pregunta */}
+                <div
+                  class={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm font-bold ${
+                    isCTA
+                      ? "bg-gemini-500/20 text-gemini-400 border border-gemini-500/30"
+                      : "bg-slate-800/80 text-slate-400 border border-slate-700/60"
+                  }`}
+                >
+                  {isCTA ? "🚀" : "?"}
+                </div>
+                <div>
+                  <h4
+                    class={`font-bold mb-2 ${
+                      isCTA ? "text-gemini-300 text-lg" : "text-white text-base"
+                    }`}
+                  >
+                    {item.q}
+                  </h4>
+                  <p class="text-slate-300 text-sm leading-relaxed">
+                    {item.a}
+                  </p>
+
+                  {/* Si es item CTA, agregar botón */}
+                  {isCTA && (
+                    <a
+                      href={buildWhatsAppLink()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 mt-4 px-6 py-3 rounded-xl bg-linear-to-r from-gemini-500 to-purple-600 text-white font-bold text-sm hover:from-gemini-600 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-gemini-500/20"
+                    >
+                      <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d={WHATSAPP_ICON_PATH}/>
+                      </svg>
+                      {item.ctaText}
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>

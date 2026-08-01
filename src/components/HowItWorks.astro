@@ -1,0 +1,97 @@
+---
+import copy from "../data/copy.json";
+import { buildWhatsAppLink, WHATSAPP_ICON_PATH, CLOCK_PATH } from "../lib/whatsapp";
+
+const waLink = buildWhatsAppLink();
+const { steps, badge, title, subtitle } = copy.howItWorks;
+---
+
+<section class="py-20 md:py-28 px-4 sm:px-6 max-w-7xl mx-auto">
+  <!-- Encabezado -->
+  <div class="text-center mb-16 md:mb-20">
+    <span class="inline-block text-xs font-bold tracking-[0.2em] text-slate-500 uppercase mb-4">
+      {badge}
+    </span>
+    <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-5">
+      {title}
+    </h2>
+    <p class="text-slate-400 text-base sm:text-lg max-w-3xl mx-auto">
+      {subtitle}
+    </p>
+  </div>
+
+  <!-- ═══ TIMELINE: Línea conectora vertical (mobile) + horizontal (desktop) ═══ -->
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      {
+        steps.map((s, i) => (
+          <div class="group relative flex md:block">
+            {/* ═══ CONECTOR: línea vertical en mobile, horizontal en desktop ═══ */}
+            {i < steps.length - 1 && (
+              <>
+                {/* Mobile: línea vertical a la izquierda */}
+                <div class="md:hidden absolute left-5 top-16 bottom-0 w-0.5 bg-linear-to-b from-gemini-500/40 via-slate-700/40 to-transparent -z-10"></div>
+                {/* Desktop: línea horizontal entre cards */}
+                <div class="hidden md:block absolute top-16 left-[calc(100%+0.5rem)] w-6 h-0.5 bg-linear-to-r from-gemini-500/40 to-transparent -z-10"></div>
+                <div class="hidden md:block absolute top-[3.75rem] right-[-1.15rem] z-20 text-gemini-500/50">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </div>
+              </>
+            )}
+
+            {/* Card del paso */}
+            <div class="bg-slate-900/70 border border-slate-800/70 rounded-2xl p-6 w-full hover:border-gemini-500/50 transition-all duration-300 card-lift relative overflow-hidden">
+              {/* Glow */}
+              <div class="absolute top-0 right-0 w-40 h-40 bg-gemini-500/5 rounded-full blur-[60px] pointer-events-none group-hover:bg-gemini-500/12 transition-all"></div>
+
+              <div class="relative z-10">
+                {/* Número con gradiente + ícono */}
+                <div class="flex items-center justify-between mb-5">
+                  <div class="w-11 h-11 rounded-xl bg-gemini-500/15 border border-gemini-500/30 flex items-center justify-center text-xl">
+                    {s.icon}
+                  </div>
+                  <span class="text-[56px] font-extrabold leading-none text-transparent bg-clip-text bg-linear-to-b from-slate-700 to-slate-800 group-hover:from-gemini-800 group-hover:to-gemini-900/60 transition-all duration-500 select-none">
+                    {String(s.step).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <h4 class="text-white font-bold text-lg mb-2.5">{s.title}</h4>
+                <p class="text-slate-400 text-sm leading-relaxed mb-5">{s.description}</p>
+
+                {/* Badge de tiempo */}
+                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/60 text-xs text-slate-400">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d={CLOCK_PATH}/>
+                  </svg>
+                  {s.duration}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    {/* ═══ CTA FINAL — después de los pasos ═══ */}
+    <div class="mt-14 text-center">
+      <div class="inline-flex flex-col items-center gap-5">
+        <p class="text-slate-400 text-sm">
+          ¿Listo para empezar? Son solo 3 pasos y menos de 5 minutos.
+        </p>
+        <a
+          href={waLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-3 px-8 py-3.5 rounded-xl bg-linear-to-r from-gemini-500 to-purple-600 text-white font-bold text-base hover:from-gemini-600 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-gemini-500/20 hover:shadow-gemini-500/35 hover:-translate-y-0.5"
+        >
+          <svg class="w-5 h-5 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24" aria-hidden="true">
+            <path d={WHATSAPP_ICON_PATH}/>
+          </svg>
+          Empezar ahora — Escribime por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+import copy from "../data/copy.json";
+
+// Mapeo de iconos → colores para cada badge
+const signalColorMap: Record<number, { bg: string; border: string; iconBg: string }> = {
+  0: { bg: "hover:border-gemini-500/40", border: "border-slate-800/60", iconBg: "bg-gemini-500/10 border-gemini-500/20 text-gemini-400" },
+  1: { bg: "hover:border-purple-500/40", border: "border-slate-800/60", iconBg: "bg-purple-500/10 border-purple-500/20 text-purple-400" },
+  2: { bg: "hover:border-emerald-500/40", border: "border-slate-800/60", iconBg: "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" },
+  3: { bg: "hover:border-sky-500/40", border: "border-slate-800/60", iconBg: "bg-sky-500/10 border-sky-500/20 text-sky-400" },
+};
+---
+
+<section class="py-16 md:py-24 px-4 sm:px-6 max-w-7xl mx-auto border-y border-slate-800/40">
+  <div class="text-center mb-12">
+    <span class="inline-block text-xs font-bold tracking-[0.2em] text-slate-500 uppercase mb-3">
+      Confianza
+    </span>
+    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white">
+      {copy.trustSignals.title}
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    {
+      copy.trustSignals.signals.map((signal, i) => {
+        const sc = signalColorMap[i] ?? signalColorMap[0];
+        return (
+          <div
+            class={`flex flex-col items-center text-center p-6 rounded-2xl bg-slate-900/50 border ${sc.border} ${sc.bg} transition-all duration-300 card-lift`}
+          >
+            {/* Contenedor de icono coloreado */}
+            <div class={`w-12 h-12 rounded-xl ${sc.iconBg} border flex items-center justify-center text-2xl mb-4`}>
+              {signal.icon}
+            </div>
+            <h4 class="text-white font-bold text-sm mb-1.5">{signal.title}</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">{signal.description}</p>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>
